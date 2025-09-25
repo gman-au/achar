@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using Achar.Infrastructure.Api.HttpClient;
-using Achar.Infrastructure.Api.Options;
+using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Reporting;
+using Achar.Infrastructure.Reporting.Html;
 using Achar.Infrastructure.Reporting.Null;
 using Achar.Infrastructure.Testing;
 using Achar.Infrastructure.Testing.Null;
@@ -47,6 +48,7 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
                 // .AddSingleton<ITestOutcomeExporter, ZephyrTestOutcomeFileExporter>()
                 // .AddSingleton<ITestOutcomeExporter, XrayFileTestOutcomeFileExporter>()
                 .AddSingleton<ITestOutcomeExporter, NullTestOutcomeExporter>()
+                .AddSingleton<ITestOutcomeExporter, HtmlTestOutcomeExporter>()
                 .AddSingleton<ITestOutcomeBuilder, TestOutcomeBuilder>()
                 .AddSingleton<IScopedTestingContextManager, ScopedTestingContextManager>()
                 .AddSingleton<IScopedReportingContextManager, ScopedReportingContextManager>()

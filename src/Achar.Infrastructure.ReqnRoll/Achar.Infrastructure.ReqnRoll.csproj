@@ -18,6 +18,7 @@
         <ProjectReference Include="..\Achar.Domain.Reporting\Achar.Domain.Reporting.csproj"/>
         <ProjectReference Include="..\Achar.Domain.Testing\Achar.Domain.Testing.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Api.HttpClient\Achar.Infrastructure.Api.HttpClient.csproj"/>
+        <ProjectReference Include="..\Achar.Infrastructure.Reporting.Html\Achar.Infrastructure.Reporting.Html.csproj" />
         <ProjectReference Include="..\Achar.Infrastructure.Reporting\Achar.Infrastructure.Reporting.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj"/>
         <ProjectReference Include="..\Achar.Interfaces.Reporting\Achar.Interfaces.Reporting.csproj" />

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Achar.Domain.Testing.Enum;
-using Achar.Infrastructure.Api.Options;
+using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.ReqnRoll.Extensions;
 using Achar.Infrastructure.Screen.Extensions;
 using Achar.Infrastructure.Testing.Extensions;
@@ -24,110 +24,109 @@ namespace Achar.Infrastructure.ReqnRoll.Steps.HighLevel
                     .ActGetContext()
                     .ActNavigateToHomePageAsync();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "rlUserImageView"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "rlUserImageView")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "tvLogin"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "tvLogin")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Enter phone no"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Enter phone no")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSendKeysToFocussedAsync("0400000000"));
+                engine
+                    .ActGetContext()
+                    .ActSendKeysToFocussedAsync("0400000000")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ByText, "Send code"));
+                engine
+                    .ActGetContext()
+                    .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ByText, "Send code")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "otp1"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ById, "otp1")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSendKeysToFocussedAsync("111111"));
+                engine
+                    .ActGetContext()
+                    .ActSendKeysToFocussedAsync("111111")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Preferred name"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Preferred name")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSendKeysToFocussedAsync("Doug Anthony"));
+                engine
+                    .ActGetContext()
+                    .ActSendKeysToFocussedAsync("Doug Anthony")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ByText, "Done"));
+                engine
+                    .ActGetContext()
+                    .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ByText, "Done")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ById, "ivBack"));
+                engine
+                    .ActGetContext()
+                    .ActSetFocussedBySelectorAsync(ElementSelectTypeEnum.ById, "ivBack")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync().IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Ok"));
+                engine
+                    .ActGetContext()
+                    .ActWaitForFocussedAsync(ElementSelectTypeEnum.ByText, "Ok")
+                    .IgnoreIfNotFound();
             await
-                Utils.IfPresentPerformAction(
-                    engine
-                        .ActGetContext()
-                        .ActClickFocussedAsync());
+                engine
+                    .ActGetContext()
+                    .ActClickFocussedAsync()
+                    .IgnoreIfNotFound();
         }
     }
 }

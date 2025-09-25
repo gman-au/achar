@@ -36,7 +36,9 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
             string element,
             string selector,
             string value) =>
-            await Utils.IfPresentPerformAction(GivenLocatesTheWith(element, selector, value));
+            await
+                GivenLocatesTheWith(element, selector, value)
+                    .IgnoreIfNotFound();
 
         [Given(@"locates the (.*) with (.*) ""(.*)""")]
         [When(@"locates the (.*) with (.*) ""(.*)""")]
@@ -60,7 +62,9 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         public async Task GivenIfPresentEntersIntoThat(
             string value,
             string element) =>
-            await Utils.IfPresentPerformAction(GivenEntersIntoThat(value, element));
+            await
+                GivenEntersIntoThat(value, element)
+                    .IgnoreIfNotFound();
 
         [Given(@"enters ""(.*)"" into that (.*)")]
         [When(@"enters ""(.*)"" into that (.*)")]
@@ -79,7 +83,9 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         [When($@"{IfPresentPrefix}clicks on that (.*)")]
         [When($@"{IfPresentPrefix}taps on that (.*)")]
         public async Task GivenIfPresentClicksOnThat(string element) =>
-            await Utils.IfPresentPerformAction(GivenClicksOnThat(element));
+            await
+                GivenClicksOnThat(element)
+                    .IgnoreIfNotFound();
 
         [Given("clicks on that (.*)")]
         [Given("taps on that (.*)")]
@@ -130,7 +136,9 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
             string element,
             string selector,
             string value) =>
-            await Utils.IfPresentPerformAction(GivenWaitsForWithToAppear(element, selector, value));
+            await
+                GivenWaitsForWithToAppear(element, selector, value)
+                    .IgnoreIfNotFound();
 
         [Given(@"waits for (.*) with (.*) ""(.*)"" to appear")]
         [When(@"waits for (.*) with (.*) ""(.*)"" to appear")]

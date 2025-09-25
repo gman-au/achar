@@ -3,9 +3,9 @@ using Achar.Domain.Testing.Exception;
 
 namespace Achar.Infrastructure.ReqnRoll.Extensions
 {
-    public class Utils
+    public static class Utils
     {
-        public static async Task IfPresentPerformAction(Task task)
+        public static async Task IgnoreIfNotFound(this Task task)
         {
             try
             {

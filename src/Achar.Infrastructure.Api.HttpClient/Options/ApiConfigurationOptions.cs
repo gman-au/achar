@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Achar.Infrastructure.Api.Options
+namespace Achar.Infrastructure.Api.HttpClient.Options
 {
     public class ApiConfigurationOptions
     {

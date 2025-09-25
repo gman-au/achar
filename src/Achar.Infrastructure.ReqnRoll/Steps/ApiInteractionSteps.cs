@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Achar.Infrastructure.Api.Extensions;
-using Achar.Infrastructure.Api.Options;
+using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Testing.Extensions;
 using Achar.Interfaces.Testing;
 using Microsoft.Extensions.Options;

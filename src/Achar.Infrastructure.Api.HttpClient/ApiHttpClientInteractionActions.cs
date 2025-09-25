@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Exception;
-using Achar.Infrastructure.Api.Options;
+using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Testing.Extensions;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
