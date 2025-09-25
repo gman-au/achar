@@ -29,8 +29,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\Achar.Sample.Tests.Profiles\API\appsettings.Development.json">
-            <Link>appsettings.Development.json</Link>
+        <Content Include="..\Achar.Sample.Tests.Profiles\API\appsettings.json">
+            <Link>appsettings.json</Link>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
