@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Achar.Interfaces\Achar.Interfaces.csproj"/>
+        <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj"/>
+    </ItemGroup>
+
+</Project>
