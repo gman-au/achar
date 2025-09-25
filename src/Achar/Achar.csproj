@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+        <DebugType>Embedded</DebugType>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>false</IncludeSymbols>
+        <IncludeSource>false</IncludeSource>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IncludeReferencedProjects>true</IncludeReferencedProjects>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Company>G-MAN Solutions</Company>
+        <Authors>Gabriel Palma</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>Achar</PackageId>
+        <Description>Cucumber-driven automated API, web, and mobile testing extensions</Description>
+        <RepositoryUrl>https://github.com/gman-au/achar</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Achar.Infrastructure.ReqnRoll\Achar.Infrastructure.ReqnRoll.csproj" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <!-- Include referenced project outputs -->
+    <ItemGroup>
+        <None Include="$(OutputPath)Achar.*.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)Achar.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)Achar.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)Achar.*.*.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)Achar.*.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)Achar.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+    </ItemGroup>
+
+</Project>
