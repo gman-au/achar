@@ -31,7 +31,8 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
             var configuration =
                 new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile($"appsettings.{environment}.json", false)
+                    .AddJsonFile($"appsettings.json", true)
+                    .AddJsonFile($"appsettings.{environment}.json", true)
                     .Build();
 
             var services = new ServiceCollection();
