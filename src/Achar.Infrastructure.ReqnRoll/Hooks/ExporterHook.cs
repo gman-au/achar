@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Achar.Infrastructure.ReqnRoll.Extensions;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 using NUnit.Framework;
 using Reqnroll;
 

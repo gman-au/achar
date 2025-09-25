@@ -2,7 +2,7 @@
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Enum;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Testing
 {
     public interface IScreenInteractionActions
     {

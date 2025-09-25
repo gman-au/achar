@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Achar.Domain.Reporting;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Reporting
 {
     public interface IStepCollector
     {

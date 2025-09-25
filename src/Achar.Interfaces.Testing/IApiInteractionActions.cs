@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Testing
 {
     public interface IApiInteractionActions
     {

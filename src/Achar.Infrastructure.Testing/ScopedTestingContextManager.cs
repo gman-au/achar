@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Enum;
-using Achar.Interfaces;
+using Achar.Interfaces.Testing;
 
 namespace Achar.Infrastructure.Testing
 {
-    public class ScopedTestContextManager(
+    public class ScopedTestingContextManager(
         IEnumerable<IScreenInteractionEngine> screenInteractionEngines,
-        IEnumerable<IApiInteractionEngine> apiInteractionEngines,
-        IEnumerable<ITestOutcomeExporter> testOutcomeExporters
+        IEnumerable<IApiInteractionEngine> apiInteractionEngines
     )
-        : IScopedTestContextManager
+        : IScopedTestingContextManager
     {
         private ScopedTestContext ScopedTestContext { get; set; } = new();
 
@@ -45,18 +44,6 @@ namespace Achar.Infrastructure.Testing
                 throw new Exception($"No applicable interaction engine found for type {ScopedTestContext?.RunnerType}");
 
             return engine;
-        }
-
-        public ITestOutcomeExporter GetTestOutcomeExporter()
-        {
-            var outcomeExporter =
-                testOutcomeExporters
-                    .FirstOrDefault(o => o.IsApplicable());
-
-            if (outcomeExporter == null)
-                throw new Exception($"No applicable interaction engine found for type {ScopedTestContext?.RunnerType}");
-
-            return outcomeExporter;
         }
     }
 }

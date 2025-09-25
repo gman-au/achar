@@ -2,7 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using Achar.Infrastructure.ReqnRoll.Extensions;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
+using Achar.Interfaces.Testing;
 using NUnit.Framework;
 using Reqnroll;
 

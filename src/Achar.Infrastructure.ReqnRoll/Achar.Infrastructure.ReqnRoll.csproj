@@ -20,7 +20,7 @@
         <ProjectReference Include="..\Achar.Infrastructure.Api.HttpClient\Achar.Infrastructure.Api.HttpClient.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Reporting\Achar.Infrastructure.Reporting.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj"/>
-        <ProjectReference Include="..\Achar.Interfaces\Achar.Interfaces.csproj"/>
+        <ProjectReference Include="..\Achar.Interfaces.Reporting\Achar.Interfaces.Reporting.csproj" />
         <ProjectReference Include="..\Achar.Infrastructure.Api\Achar.Infrastructure.Api.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Screen\Achar.Infrastructure.Screen.csproj"/>
     </ItemGroup>

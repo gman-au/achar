@@ -3,9 +3,11 @@ using System.IO;
 using Achar.Infrastructure.Api.HttpClient;
 using Achar.Infrastructure.Api.Options;
 using Achar.Infrastructure.Reporting;
+using Achar.Infrastructure.Reporting.Null;
 using Achar.Infrastructure.Testing;
 using Achar.Infrastructure.Testing.Null;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
+using Achar.Interfaces.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Reqnroll.Microsoft.Extensions.DependencyInjection;
@@ -46,7 +48,8 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
                 // .AddSingleton<ITestOutcomeExporter, XrayFileTestOutcomeFileExporter>()
                 .AddSingleton<ITestOutcomeExporter, NullTestOutcomeExporter>()
                 .AddSingleton<ITestOutcomeBuilder, TestOutcomeBuilder>()
-                .AddSingleton<IScopedTestContextManager, ScopedTestContextManager>()
+                .AddSingleton<IScopedTestingContextManager, ScopedTestingContextManager>()
+                .AddSingleton<IScopedReportingContextManager, ScopedReportingContextManager>()
                 .AddSingleton<IDeviceDataBuilder, DeviceDataBuilder>()
                 .AddScoped<ITestDateStamper, TestDateStamper>()
                 .AddScoped<IStepCollector, StepCollector>();

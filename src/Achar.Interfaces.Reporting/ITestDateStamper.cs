@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Reporting
 {
     public interface ITestDateStamper
     {

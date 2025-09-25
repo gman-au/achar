@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Achar.Infrastructure.Testing.Extensions;
-using Achar.Interfaces;
+using Achar.Interfaces.Testing;
 using Reqnroll;
 
 namespace Achar.Infrastructure.ReqnRoll.Steps

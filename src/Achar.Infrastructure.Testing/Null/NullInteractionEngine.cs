@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Enum;
-using Achar.Interfaces;
+using Achar.Interfaces.Testing;
 
 namespace Achar.Infrastructure.Testing.Null
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Achar.Domain.Testing.Enum;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Testing
 {
     public interface IInteractionEngine
     {

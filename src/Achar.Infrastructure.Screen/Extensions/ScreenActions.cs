@@ -2,7 +2,7 @@
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Enum;
 using Achar.Infrastructure.Testing.Extensions;
-using Achar.Interfaces;
+using Achar.Interfaces.Testing;
 
 namespace Achar.Infrastructure.Screen.Extensions
 {

@@ -6,6 +6,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Achar.Infrastructure.Api\Achar.Infrastructure.Api.csproj"/>
+        <ProjectReference Include="..\Achar.Interfaces.Testing\Achar.Interfaces.Testing.csproj" />
     </ItemGroup>
 
     <ItemGroup>

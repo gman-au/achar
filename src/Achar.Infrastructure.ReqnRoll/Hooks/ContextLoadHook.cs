@@ -3,7 +3,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Achar.Domain.Testing.Enum;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
+using Achar.Interfaces.Testing;
 using NUnit.Framework;
 using Reqnroll;
 
@@ -18,7 +19,7 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
         // (injected interfaces are selected based on values extracted here)
         [Before(Order = 1)]
         public static async Task LoadContextDataAsync(
-            IScopedTestContextManager scopedTestContextManager,
+            IScopedReportingContextManager scopedReportingContextManager,
             ITestOutcomeBuilder builder)
         {
             var testContext =
@@ -28,7 +29,7 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
             var deviceContext =
                 await ExtractFeatureAttributesAsync<RunnerTypeEnum>(testContext, TagDevice);
 
-            scopedTestContextManager
+            scopedReportingContextManager
                 .SetDeviceContext(deviceContext);
 
             // await

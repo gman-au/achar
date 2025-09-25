@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Achar.Domain.Reporting;
 
-namespace Achar.Interfaces
+namespace Achar.Interfaces.Reporting
 {
     public interface ITestOutcomeExporter
     {
@@ -13,5 +13,7 @@ namespace Achar.Interfaces
         );
 
         bool IsApplicable();
+
+        int SortOrder { get; set; }
     }
 }

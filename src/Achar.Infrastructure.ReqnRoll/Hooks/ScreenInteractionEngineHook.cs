@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Achar.Interfaces;
+using Achar.Interfaces.Testing;
 using Reqnroll;
 
 namespace Achar.Infrastructure.ReqnRoll.Hooks
@@ -8,7 +8,7 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
     public class ScreenInteractionEngineHook
     {
         [Before(Order = 2)]
-        public static async Task OpenAsync(IScopedTestContextManager contextManager)
+        public static async Task OpenAsync(IScopedTestingContextManager contextManager)
         {
             var engine =
                 contextManager
@@ -20,7 +20,7 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
         }
 
         [After(Order = 999)]
-        public static async Task CloseBrowserAsync(IScopedTestContextManager contextManager)
+        public static async Task CloseBrowserAsync(IScopedTestingContextManager contextManager)
         {
             var engine =
                 contextManager

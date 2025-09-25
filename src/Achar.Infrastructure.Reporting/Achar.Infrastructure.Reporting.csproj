@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Achar.Interfaces\Achar.Interfaces.csproj"/>
+        <ProjectReference Include="..\Achar.Interfaces.Reporting\Achar.Interfaces.Reporting.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Achar.Domain.Reporting;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 
-namespace Achar.Infrastructure.Testing.Null
+namespace Achar.Infrastructure.Reporting.Null
 {
     public class NullTestOutcomeExporter : ITestOutcomeExporter
     {
@@ -13,5 +13,7 @@ namespace Achar.Infrastructure.Testing.Null
             DateTime startTime) => Task.CompletedTask;
 
         public bool IsApplicable() => true;
+
+        public int SortOrder { get; set; } = 999;
     }
 }

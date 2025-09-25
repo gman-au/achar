@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Achar.Domain.Reporting;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 
 namespace Achar.Infrastructure.Reporting
 {

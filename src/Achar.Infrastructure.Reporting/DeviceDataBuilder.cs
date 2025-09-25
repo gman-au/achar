@@ -1,7 +1,7 @@
 ﻿using Achar.Domain.Reporting;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 
-namespace Achar.Infrastructure.Testing
+namespace Achar.Infrastructure.Reporting
 {
     public class DeviceDataBuilder : IDeviceDataBuilder
     {

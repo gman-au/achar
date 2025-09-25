@@ -5,8 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Achar.Interfaces\Achar.Interfaces.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj"/>
+        <ProjectReference Include="..\Achar.Interfaces.Testing\Achar.Interfaces.Testing.csproj" />
     </ItemGroup>
 
 </Project>

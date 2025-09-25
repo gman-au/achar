@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Achar.Domain.Reporting;
 using Achar.Domain.Reporting.Enum;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 using Reqnroll;
 
 namespace Achar.Infrastructure.ReqnRoll.Hooks

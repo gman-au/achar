@@ -1,5 +1,5 @@
 ﻿using System;
-using Achar.Interfaces;
+using Achar.Interfaces.Reporting;
 
 namespace Achar.Infrastructure.Reporting
 {
