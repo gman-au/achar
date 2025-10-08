@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Achar.Domain.Reporting;
+using Achar.Domain.Reporting.Enum;
 using Achar.Interfaces.Reporting;
 
 namespace Achar.Infrastructure.Reporting.Html
@@ -10,7 +11,7 @@ namespace Achar.Infrastructure.Reporting.Html
     public class HtmlTestOutcomeExporter : ITestOutcomeExporter
     {
         private const string HtmlRowFormat = "<tr><td>{0}</td><td>{1}</td></tr>";
-        private const string HtmlCellFormat = "<td>{0}</td>";
+        private const string HtmlCellFormat = "<td {1}>{0}</td>";
 
         public async Task PerformAsync(
             TestOutcome testOutcome,
@@ -25,8 +26,10 @@ namespace Achar.Infrastructure.Reporting.Html
 
             htmlBuilder.AppendLine("<html>");
             htmlBuilder.AppendLine("<head>");
+            htmlBuilder.AppendLine(HtmlReportStyle.FontLink);
+            htmlBuilder.AppendLine(HtmlReportStyle.FontAwesomeLink);
             htmlBuilder.AppendLine("<style>");
-            htmlBuilder.AppendLine("table, tr, th, td { border: 1px solid grey; }");
+            htmlBuilder.AppendLine(HtmlReportStyle.StyleHeader);
             htmlBuilder.AppendLine("</style>");
             htmlBuilder.AppendLine("</head>");
 
@@ -42,14 +45,15 @@ namespace Achar.Infrastructure.Reporting.Html
             htmlBuilder.AppendFormat(HtmlRowFormat, "Status", testOutcome.Status.ToString());
 
             htmlBuilder.AppendLine("</table>");
+            htmlBuilder.AppendLine("<hr/>");
             htmlBuilder.AppendLine("<table>");
 
             foreach (var step in testOutcome.Steps)
             {
                 htmlBuilder.AppendLine("<tr>");
-                htmlBuilder.AppendFormat(HtmlCellFormat, $"<b>{step.StepKeyword}</b> {step.StepName}");
-                htmlBuilder.AppendFormat(HtmlCellFormat, step.Status);
-                htmlBuilder.AppendFormat(HtmlCellFormat, step.Duration);
+                htmlBuilder.AppendFormat(HtmlCellFormat, $"<span class=\"t-keyword\">{step.StepKeyword}</span> {step.StepName}", RenderStatusClass(step.Status));
+                htmlBuilder.AppendFormat(HtmlCellFormat, RenderStatusIcon(step.Status), RenderStatusClass(step.Status, 5));
+                htmlBuilder.AppendFormat(HtmlCellFormat, step.Duration, RenderStatusClass(step.Status, 5));
                 htmlBuilder.AppendLine("</tr>");
             }
 
@@ -65,5 +69,27 @@ namespace Achar.Infrastructure.Reporting.Html
         public bool IsApplicable() => true;
 
         public int SortOrder { get; set; } = 1;
+
+        private static string RenderStatusIcon(TestStatusEnum value)
+        {
+            switch (value)
+            {
+                case TestStatusEnum.Passed: return HtmlReportStyle.PassIcon;
+                case TestStatusEnum.Failed: return HtmlReportStyle.FailIcon;
+                default: return HtmlReportStyle.UnknownIcon;
+            }
+        }
+
+        private static string RenderStatusClass(TestStatusEnum value, int? width = null)
+        {
+            var widthStyle = $"width=\"{(width.HasValue ? width + "%" : "auto")}\"";
+
+            switch (value)
+            {
+                case TestStatusEnum.Passed: return widthStyle + " class=\"t-passing\"";
+                case TestStatusEnum.Failed: return widthStyle + " class=\"t-failing\"";
+                default: return null;
+            }
+        }
     }
 }
