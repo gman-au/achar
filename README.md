@@ -1,5 +1,9 @@
 # achar
 
+<p align="center">
+<img style="border-radius:10px;" alt="siren" width="300" src="https://github.com/user-attachments/assets/dbc036b1-406d-4faa-a571-cdea3f2968ed" />
+</p>
+
 ![NuGet Version](https://img.shields.io/nuget/v/Achar?label=Achar)
 
 ## Summary
