@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using Achar.Domain.Reporting;
 using Achar.Interfaces.Reporting;
 

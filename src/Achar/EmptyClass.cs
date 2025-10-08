@@ -1,5 +1,6 @@
-﻿namespace Achar;
-
-public class EmptyClass
+﻿namespace Achar
 {
+    internal class EmptyClass
+    {
+    }
 }
