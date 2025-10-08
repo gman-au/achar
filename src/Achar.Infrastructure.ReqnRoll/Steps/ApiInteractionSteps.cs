@@ -4,6 +4,7 @@ using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Testing.Extensions;
 using Achar.Interfaces.Testing;
 using Microsoft.Extensions.Options;
+using NUnit.Framework;
 using Reqnroll;
 
 namespace Achar.Infrastructure.ReqnRoll.Steps
@@ -126,6 +127,15 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                 engine
                     .ActGetContext()
                     .AssertJsonTokenPathValueEqualsAsync(path, expectedValue);
+        }
+
+        [Given(@"test is skipped")]
+        [When(@"test is skipped")]
+        [Then(@"test is skipped")]
+        public async Task GivenTestIsSkipped()
+        {
+            Assert
+                .Ignore("Test has been skipped");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Achar.Domain.Testing.Exception;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Achar.Infrastructure.Api.HttpClient
@@ -80,9 +81,24 @@ namespace Achar.Infrastructure.Api.HttpClient
                 jObject
                     .SelectToken(jsonTokenPath);
 
-            var actualValue =
-                expectedObject?
-                    .Value<string>();
+            string actualValue;
+
+            if (expectedObject?.Type != JTokenType.Object)
+            {
+                actualValue =
+                    expectedObject?
+                        .Value<string>();
+            }
+            else
+            {
+                var dict =
+                    expectedObject
+                        .Value<JObject>();
+
+                actualValue =
+                    dict
+                        .ToString(Formatting.None);
+            }
 
             if (!string.Equals(actualValue, expectedValue, StringComparison.InvariantCultureIgnoreCase))
                 throw new ApiResponseValueUnexpectedException(jsonTokenPath, expectedValue, actualValue, _lastRequest);

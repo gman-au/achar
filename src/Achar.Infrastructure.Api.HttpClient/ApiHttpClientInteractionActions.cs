@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Achar.Domain.Testing;
 using Achar.Domain.Testing.Exception;
+using Achar.Infrastructure.Api.HttpClient.Extensions;
 using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Testing.Extensions;
 using Microsoft.Extensions.Options;
@@ -59,7 +60,8 @@ namespace Achar.Infrastructure.Api.HttpClient
             string jsonTokenPath,
             string value)
         {
-            _requestBody[jsonTokenPath] = value;
+            _requestBody
+                .SetJObject(jsonTokenPath, value);
 
             return
                 Task
