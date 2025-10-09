@@ -1,0 +1,43 @@
+name: cucumber-can.yml
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - master
+    paths:
+      - '**/Achar.Infrastructure.ReqnRoll/**'
+jobs:
+  siren-gen:
+    runs-on: ubuntu-latest
+    env:
+      MAJOR_VERSION: 9
+      MINOR_VERSION: 0
+      SOLUTION_PATH: ./src/
+      MIGRATION_DLL: Achar.Infrastructure.ReqnRoll.dll
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 9.0.x  
+    - name: Install cucumber-can tool
+      run: dotnet tool install -g Gman.Cucumber.Cannery
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION_PATH
+    - name: Build
+      run: dotnet publish $SOLUTION_PATH --no-restore --ignore-failed-sources -c Release      
+    - name: Create output folder
+      run: mkdir ./output
+    - name: Consolidate packages (including symbols)
+      run: find . -name "*.dll" -type f -exec cp {} ./output \;
+    - name: Echo packages
+      run: find ./output -name "*.dll" -type f -exec echo {} \;
+    - name: Run cucumber-can on step definition assembly
+      run: cucumber-can "./output/" "$MIGRATION_DLL" "REFERENCE.md"
+    - name: Commit REFERENCE
+      run: |
+        git config user.email "info@gman.com.au"
+        git config user.name "G-MAN Support"
+        git commit REFERENCE.md -m "Updated REFERENCE (cucumber-can)" || echo "No changes to commit"
+        git push origin || echo "No changes to commit"
