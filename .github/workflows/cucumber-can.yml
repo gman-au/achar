@@ -8,7 +8,7 @@ on:
     paths:
       - '**/Achar.Infrastructure.ReqnRoll/**'
 jobs:
-  siren-gen:
+  cucumber-can:
     runs-on: ubuntu-latest
     env:
       MAJOR_VERSION: 9
