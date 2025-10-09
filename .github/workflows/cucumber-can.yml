@@ -14,7 +14,8 @@ jobs:
       MAJOR_VERSION: 9
       MINOR_VERSION: 0
       SOLUTION_PATH: ./src/
-      MIGRATION_DLL: Achar.Infrastructure.ReqnRoll.dll
+      ASSEMBLY_DLL: Achar.Infrastructure.ReqnRoll.dll
+      ASSEMBLY_XML: Achar.Infrastructure.ReqnRoll.xml
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -29,12 +30,16 @@ jobs:
       run: dotnet publish $SOLUTION_PATH --no-restore --ignore-failed-sources -c Release      
     - name: Create output folder
       run: mkdir ./output
-    - name: Consolidate packages (including symbols)
-      run: find . -name "*.dll" -type f -exec cp {} ./output \;
-    - name: Echo packages
-      run: find ./output -name "*.dll" -type f -exec echo {} \;
+    - name: Copy DLL to output folder
+      run: find . -name "$ASSEMBLY_DLL" -type f -exec cp {} ./output \;
+    - name: Echo assembly DLL
+      run: find ./output -name "$ASSEMBLY_DLL" -type f -exec echo {} \;
+    - name: Copy XML to output folder
+      run: find . -name "$ASSEMBLY_XML" -type f -exec cp {} ./output \; 
+    - name: Echo assembly XML
+      run: find ./output -name "$ASSEMBLY_XML" -type f -exec echo {} \;
     - name: Run cucumber-can on step definition assembly
-      run: cucumber-can "./output/" "$MIGRATION_DLL" "REFERENCE.md"
+      run: cucumber-can "./output/" "$ASSEMBLY_DLL" "REFERENCE.md"
     - name: Commit REFERENCE
       run: |
         git config user.email "info@gman.com.au"

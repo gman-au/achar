@@ -28,3 +28,5 @@ This will ensure that the Achar infrastructure and DI will be loaded prior to ru
 
 
 3. Create and run your feature files accordingly and they should be included in the tests for the project.
+
+## [Command reference](https://github.com/gman-au/achar/blob/master/REFERENCE.md)
