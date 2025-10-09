@@ -39,10 +39,6 @@ namespace Achar.Infrastructure.Testing.Null
             int x,
             int y) => Task.CompletedTask;
 
-        public Task InjectAudioFileAsync(string fileReference) => Task.CompletedTask;
-
-        public Task PlayAudioFileAsync() => Task.CompletedTask;
-
         public bool IsApplicable(RunnerTypeEnum runnerType) => runnerType == RunnerTypeEnum.NotSet;
 
         public Task AssertClickableAsync() => Task.CompletedTask;

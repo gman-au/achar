@@ -26,9 +26,5 @@ namespace Achar.Interfaces.Testing
             int x,
             int y
         );
-
-        Task InjectAudioFileAsync(string fileReference);
-
-        Task PlayAudioFileAsync();
     }
 }

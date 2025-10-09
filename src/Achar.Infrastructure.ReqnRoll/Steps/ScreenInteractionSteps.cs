@@ -12,6 +12,9 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
     {
         private const string IfPresentPrefix = "if present, ";
 
+        /// <summary>
+        /// Navigates to the home / base page URL.
+        /// </summary>
         [Given("a user has navigated to the home page")]
         public async Task GivenAUserHasNavigatedToTheHomePage()
         {
@@ -21,6 +24,11 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .ActNavigateToHomePageAsync();
         }
 
+        /// <summary>
+        /// Navigates to a specific path against the base URL.
+        /// This is not an interaction step per se, instead, the URL is rewritten directly.
+        /// </summary>
+        /// <param name="path">The path relative to the base URL e.g. "/products/10".</param>
         [Given(@"a user has navigated to the ""(.*)"" page")]
         public async Task GivenAUserHasNavigatedToThePage(string path)
         {
@@ -30,6 +38,13 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .ActNavigateToPathAsync(path);
         }
 
+        /// <summary>
+        /// Attempts to locate a screen element using a defined selector.
+        /// After attempting, silently ignores if the element is not visible.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given($@"{IfPresentPrefix}locates the (.*) with (.*) ""(.*)""")]
         [When($@"{IfPresentPrefix}locates the (.*) with (.*) ""(.*)""")]
         public async Task GivenIfPresentLocatesTheWith(
@@ -40,6 +55,13 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                 GivenLocatesTheWith(element, selector, value)
                     .IgnoreIfNotFound();
 
+        /// <summary>
+        /// Attempts to locate a screen element using a defined selector.
+        /// After attempting, asserts that it is visible and fails if it is not.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given(@"locates the (.*) with (.*) ""(.*)""")]
         [When(@"locates the (.*) with (.*) ""(.*)""")]
         public async Task GivenLocatesTheWith(
@@ -57,6 +79,12 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertVisibleAsync();
         }
 
+        /// <summary>
+        /// Enters a series of characters into a given element, e.g. typing text into a text box.
+        /// Silently ignores and aborts the command if the element is not visible.
+        /// </summary>
+        /// <param name="value">The value of the text to be passed to the element.</param>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Given($@"{IfPresentPrefix}enters ""(.*)"" into that (.*)")]
         [When($@"{IfPresentPrefix}enters ""(.*)"" into that (.*)")]
         public async Task GivenIfPresentEntersIntoThat(
@@ -66,6 +94,11 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                 GivenEntersIntoThat(value, element)
                     .IgnoreIfNotFound();
 
+        /// <summary>
+        /// Enters a series of characters into a given element, e.g. typing text into a text box.
+        /// </summary>
+        /// <param name="value">The value of the text to be passed to the element.</param>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Given(@"enters ""(.*)"" into that (.*)")]
         [When(@"enters ""(.*)"" into that (.*)")]
         public async Task GivenEntersIntoThat(
@@ -78,6 +111,11 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .ActSendKeysToFocussedAsync(value);
         }
 
+        /// <summary>
+        /// Sends a 'press' or 'click' event to the screen element.
+        /// Silently ignores and aborts the command if the element is not visible or clickable.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Given($@"{IfPresentPrefix}clicks on that (.*)")]
         [Given($@"{IfPresentPrefix}taps on that (.*)")]
         [When($@"{IfPresentPrefix}clicks on that (.*)")]
@@ -87,6 +125,11 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                 GivenClicksOnThat(element)
                     .IgnoreIfNotFound();
 
+        /// <summary>
+        /// Sends a 'press' or 'click' event to the screen element.
+        /// Asserts that it is clickable and fails if it is not.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Given("clicks on that (.*)")]
         [Given("taps on that (.*)")]
         [When("clicks on that (.*)")]
@@ -99,6 +142,13 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .ActClickFocussedAsync();
         }
 
+        /// <summary>
+        /// Attempts to locate a screen element using a defined selector, scrolling the screen downwards if required.
+        /// After attempting, asserts that it is visible and fails if it is not.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given(@"scrolls the (.*) with (.*) ""(.*)"" into view")]
         [When(@"scrolls the (.*) with (.*) ""(.*)"" into view")]
         public async Task GivenScrollsTheWithIntoView(
@@ -116,6 +166,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertVisibleAsync();
         }
 
+        /// <summary>
+        /// Performs a 'fling' action in the direction as specified.
+        /// </summary>
+        /// <param name="y">The vertical fling amount, in screen units.</param>
         [Given(@"flings down (.*)")]
         [When(@"flings down (.*)")]
         public async Task GivenFlingsDown(int y)
@@ -130,6 +184,13 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertVisibleAsync();
         }
 
+        /// <summary>
+        /// Attempts to locate a screen element using a defined selector, scrolling the screen downwards if required.
+        /// Silently ignores and aborts the command if the element is not visible or clickable after the full timeout period.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given($@"{IfPresentPrefix}waits for (.*) with (.*) ""(.*)"" to appear")]
         [When($@"{IfPresentPrefix}waits for (.*) with (.*) ""(.*)"" to appear")]
         public async Task GivenIfPresentWaitsForWithToAppear(
@@ -140,6 +201,13 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                 GivenWaitsForWithToAppear(element, selector, value)
                     .IgnoreIfNotFound();
 
+        /// <summary>
+        /// Attempts to locate a screen element using a defined selector, waiting the full timeout period if required.
+        /// After attempting, asserts that it is visible and fails if it is not.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given(@"waits for (.*) with (.*) ""(.*)"" to appear")]
         [When(@"waits for (.*) with (.*) ""(.*)"" to appear")]
         public async Task GivenWaitsForWithToAppear(
@@ -156,6 +224,14 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     );
         }
 
+        /// <summary>
+        /// Attempts to locate the (nth) screen element using a defined selector.
+        /// After attempting, asserts that it is visible and fails if it is not.
+        /// </summary>
+        /// <param name="nth">The occurrence of the element you wish to find. The command will understand any value with a number e.g. "5th", "14th", "2002nd".</param>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
+        /// <param name="selector">The selector through which the value is passed. Can be any entry from the SelectorMappings dictionary e.g. "id", "text", "title".</param>
+        /// <param name="value">The value of the selector, e.g. "data-test-id-submit-button" or "AgeTextField".</param>
         [Given(@"finds the (.*) (.*) with (.*) ""(.*)""")]
         [When(@"finds the (.*) (.*) with (.*) ""(.*)""")]
         public async Task GivenFindsTheWith(
@@ -179,26 +255,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertVisibleAsync();
         }
 
-        [Given(@"injects an audio file with reference ""(.*)""")]
-        [When(@"injects an audio file with reference ""(.*)""")]
-        public async Task GivenInjectsAnAudioFileWithReference(string reference)
-        {
-            await
-                engine
-                    .ActGetContext()
-                    .ActInjectAudioFileAsync(reference);
-        }
-
-        [Given(@"plays the injected audio")]
-        [When(@"plays the injected audio")]
-        public async Task GivenPlaysTheInjectedAudio()
-        {
-            await
-                engine
-                    .ActGetContext()
-                    .ActPlayAudioFileAsync();
-        }
-
+        /// <summary>
+        /// Checks that the (last located) screen element is not visible.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Then(@"the (.*) should not be visible")]
         public async Task ThenTheShouldNotBeVisible(string element)
         {
@@ -208,6 +268,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertNotVisibleAsync();
         }
 
+        /// <summary>
+        /// Checks that the (last located) screen element is visible.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Then(@"the (.*) should be visible")]
         public async Task ThenTheShouldBeVisible(string element)
         {
@@ -217,6 +281,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertVisibleAsync();
         }
 
+        /// <summary>
+        /// Checks that the (last located) screen element is not clickable.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Then(@"the (.*) should not be clickable")]
         public async Task ThenTheShouldNotBeClickable(string element)
         {
@@ -226,6 +294,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertNotClickableAsync();
         }
 
+        /// <summary>
+        /// Checks that the (last located) screen element is clickable.
+        /// </summary>
+        /// <param name="element">The name of the element e.g. "button", "list", "banner". Used only for step clarity.</param>
         [Then(@"the (.*) should be clickable")]
         public async Task ThenTheShouldBeClickable(string element)
         {
@@ -235,6 +307,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
                     .AssertClickableAsync();
         }
 
+        /// <summary>
+        /// Waits a number of seconds before continuing.
+        /// </summary>
+        /// <param name="seconds">The wait interval, in seconds.</param>
         [Given(@"waits (.*) seconds")]
         [When(@"waits (.*) seconds")]
         public async Task GivenWaitsSeconds(int seconds)

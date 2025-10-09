@@ -8,6 +8,10 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
     [Binding]
     public class InteractionSteps(IInteractionEngine engine)
     {
+        /// <summary>
+        /// Waits a number of seconds before continuing.
+        /// </summary>
+        /// <param name="seconds">The wait interval, in seconds.</param>
         [Given(@"(.*) seconds have elapsed")]
         [When(@"(.*) seconds have elapsed")]
         [Then(@"(.*) seconds have elapsed")]

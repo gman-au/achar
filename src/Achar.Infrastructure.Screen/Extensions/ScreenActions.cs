@@ -219,31 +219,5 @@ namespace Achar.Infrastructure.Screen.Extensions
             value,
             index,
             fromRoot
-        );
-
-        public static async Task<IScreenInteractionEngine> ActInjectAudioFileAsync(
-            this Task<IScreenInteractionEngine> task,
-            string fileReference)
-        {
-            var context = await task;
-
-            await
-                context
-                    .InjectAudioFileAsync(fileReference);
-
-            return context;
-        }
-
-        public static async Task<IScreenInteractionEngine> ActPlayAudioFileAsync(
-            this Task<IScreenInteractionEngine> task)
-        {
-            var context = await task;
-
-            await
-                context
-                    .PlayAudioFileAsync();
-
-            return context;
-        }
-    }
+        );    }
 }
