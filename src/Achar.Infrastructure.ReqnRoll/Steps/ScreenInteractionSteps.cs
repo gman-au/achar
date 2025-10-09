@@ -80,7 +80,7 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         }
 
         /// <summary>
-        /// Enters a series of characters into a given element, e.g. typing text into a text box.
+        /// Enters a series of characters into a given element, e.g. typing text into a text or number box.
         /// Silently ignores and aborts the command if the element is not visible.
         /// </summary>
         /// <param name="value">The value of the text to be passed to the element.</param>
