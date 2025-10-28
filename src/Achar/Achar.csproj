@@ -35,6 +35,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.Playwright" Version="1.41.1" PrivateAssets="None"/>
         <PackageReference Include="Reqnroll.NUnit" Version="2.2.1" PrivateAssets="None"/>
         <PackageReference Include="Reqnroll.Microsoft.Extensions.DependencyInjection" Version="2.2.1" PrivateAssets="None"/>
     </ItemGroup>
@@ -57,6 +58,11 @@
     <ItemGroup>
         <None Include="$(OutputPath)Reqnroll.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
         <None Include="$(OutputPath)Reqnroll.*.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(OutputPath)Microsoft.Playwright.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath).playwright\**" Pack="true" PackagePath="lib\$(TargetFramework)\.playwright"/>
     </ItemGroup>
 
 </Project>
