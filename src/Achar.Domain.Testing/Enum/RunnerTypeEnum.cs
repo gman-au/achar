@@ -5,6 +5,7 @@
         NotSet = 0,
         Api,
         Mobile,
-        BrowserStack
+        BrowserStack,
+        Web
     }
 }

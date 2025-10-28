@@ -32,7 +32,7 @@ namespace Achar.Infrastructure.Appium.Android
 
         public bool IsApplicable(RunnerTypeEnum runnerType) => runnerType == RunnerTypeEnum.Mobile;
 
-        public virtual async Task SetupContextAsync()
+        public virtual async Task SetupContextAsync(string testName = null)
         {
             var serverUri = new Uri(_appiumOptions.AppiumHost);
             var capabilities =
@@ -90,7 +90,7 @@ namespace Achar.Infrastructure.Appium.Android
             }
         }
 
-        public async Task<string> StopAndGetRecordingAsync()
+        public async Task<string> StopAndGetRecordingAsync(bool? failed = null)
         {
             if (!(_recordingOptions?.Enabled ?? false)) return null;
 
@@ -101,7 +101,7 @@ namespace Achar.Infrastructure.Appium.Android
             return data;
         }
 
-        public async Task TeardownContextAsync()
+        public async Task TeardownContextAsync(bool? failed = null)
         {
             Driver
                 .TerminateApp(_appiumOptions.StartPackageName);

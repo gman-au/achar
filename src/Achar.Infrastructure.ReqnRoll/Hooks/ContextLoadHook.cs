@@ -20,6 +20,7 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
         [Before(Order = 1)]
         public static async Task LoadContextDataAsync(
             IScopedReportingContextManager scopedReportingContextManager,
+            IScopedTestingContextManager scopedTestingContextManager,
             ITestOutcomeBuilder builder)
         {
             var testContext =
@@ -30,6 +31,9 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
                 await ExtractFeatureAttributesAsync<RunnerTypeEnum>(testContext, TagDevice);
 
             scopedReportingContextManager
+                .SetDeviceContext(deviceContext);
+
+            scopedTestingContextManager
                 .SetDeviceContext(deviceContext);
 
             // await

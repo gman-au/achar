@@ -3,6 +3,9 @@ using System.IO;
 using Achar.Infrastructure.Api.HttpClient;
 using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Appium.Android;
+using Achar.Infrastructure.Appium.Android.Options;
+using Achar.Infrastructure.Playwright;
+using Achar.Infrastructure.Playwright.Options;
 using Achar.Infrastructure.Reporting;
 using Achar.Infrastructure.Reporting.Html;
 using Achar.Infrastructure.Reporting.Null;
@@ -40,11 +43,14 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
 
             services
                 .Configure<ApiConfigurationOptions>(configuration.GetSection(nameof(ApiConfigurationOptions)))
-                // .Configure<AppiumConfigurationOptions>(configuration.GetSection(nameof(AppiumConfigurationOptions)))
+                .Configure<WebDriverConfigurationOptions>(configuration.GetSection(nameof(WebDriverConfigurationOptions)))
+                .Configure<AppiumConfigurationOptions>(configuration.GetSection(nameof(AppiumConfigurationOptions)))
                 // .Configure<BrowserStackConfigurationOptions>(configuration.GetSection(nameof(BrowserStackConfigurationOptions)))
                 .AddSingleton<IApiInteractionEngine, ApiHttpClientInteractionEngine>()
                 .AddSingleton<IScreenInteractionEngine, AppiumInteractionEngine>()
                 .AddSingleton<IScreenInteractionEngine, NullInteractionEngine>()
+                .AddSingleton<IScreenInteractionEngine, PlaywrightEngine>()
+                .AddSingleton<IKeyboardKeyMapper, KeyboardKeyMapper>()
                 // .AddSingleton<IScreenInteractionEngine, AndroidAppiumInteractionEngine>()
                 // .AddTransient<IKeyboardKeyMapper, AndroidAppiumKeyboardKeyMapper>()
                 // .AddSingleton<ITestOutcomeExporter, ZephyrTestOutcomeFileExporter>()

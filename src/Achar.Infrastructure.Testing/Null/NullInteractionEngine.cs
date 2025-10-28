@@ -29,11 +29,11 @@ namespace Achar.Infrastructure.Testing.Null
             string jsonTokenPath,
             string expectedValue) => Task.CompletedTask;
 
-        public Task SetupContextAsync() => Task.CompletedTask;
+        public Task SetupContextAsync(string testName = null) => Task.CompletedTask;
 
         public Task ResetContextAsync() => Task.CompletedTask;
 
-        public Task TeardownContextAsync() => Task.CompletedTask;
+        public Task TeardownContextAsync(bool? failed = null) => Task.CompletedTask;
 
         public Task FlingFocussedAsync(
             int x,
@@ -73,7 +73,7 @@ namespace Achar.Infrastructure.Testing.Null
 
         public Task StartRecordingAsync() => Task.CompletedTask;
 
-        public Task<string> StopAndGetRecordingAsync() => Task.FromResult<string>(null);
+        public Task<string> StopAndGetRecordingAsync(bool? failed = null) => Task.FromResult<string>(null);
 
         public Task FillFocussedWithTextAsync(string text) => Task.CompletedTask;
     }

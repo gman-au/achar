@@ -4,14 +4,14 @@ namespace Achar.Interfaces.Testing
 {
     public interface IScreenInteractionEngine : IInteractionEngine, IScreenInteractionActions, IScreenInteractionAssertions
     {
-        Task SetupContextAsync();
+        Task SetupContextAsync(string testName = null);
 
         Task ResetContextAsync();
 
-        Task TeardownContextAsync();
+        Task TeardownContextAsync(bool? failed = null);
 
         Task StartRecordingAsync();
 
-        Task<string> StopAndGetRecordingAsync();
+        Task<string> StopAndGetRecordingAsync(bool? failed = null);
     }
 }

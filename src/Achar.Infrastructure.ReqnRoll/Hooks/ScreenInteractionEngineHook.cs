@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Achar.Interfaces.Testing;
+using NUnit.Framework;
 using Reqnroll;
 
 namespace Achar.Infrastructure.ReqnRoll.Hooks
@@ -14,9 +15,16 @@ namespace Achar.Infrastructure.ReqnRoll.Hooks
                 contextManager
                     .GetScreenInteractionEngine();
 
+            var test =
+                TestContext
+                    .CurrentContext
+                    .Test;
+
+            var testName = $"{test?.ClassName}.{test?.MethodName}";
+
             await
                 engine
-                    .SetupContextAsync();
+                    .SetupContextAsync(testName);
         }
 
         [After(Order = 999)]

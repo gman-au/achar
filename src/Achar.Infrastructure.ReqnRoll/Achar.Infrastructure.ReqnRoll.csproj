@@ -20,6 +20,7 @@
         <ProjectReference Include="..\Achar.Domain.Testing\Achar.Domain.Testing.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Api.HttpClient\Achar.Infrastructure.Api.HttpClient.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Appium.Android\Achar.Infrastructure.Appium.Android.csproj" />
+        <ProjectReference Include="..\Achar.Infrastructure.Playwright\Achar.Infrastructure.Playwright.csproj" />
         <ProjectReference Include="..\Achar.Infrastructure.Reporting.Html\Achar.Infrastructure.Reporting.Html.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Reporting\Achar.Infrastructure.Reporting.csproj"/>
         <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj"/>
