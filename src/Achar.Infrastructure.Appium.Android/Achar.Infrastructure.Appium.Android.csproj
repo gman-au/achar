@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Appium.WebDriver" Version="4.4.0"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Achar.Domain.Testing\Achar.Domain.Testing.csproj" />
+      <ProjectReference Include="..\Achar.Infrastructure.Testing\Achar.Infrastructure.Testing.csproj" />
+      <ProjectReference Include="..\Achar.Interfaces.Reporting\Achar.Interfaces.Reporting.csproj" />
+      <ProjectReference Include="..\Achar.Interfaces.Testing\Achar.Interfaces.Testing.csproj" />
+    </ItemGroup>
+
+</Project>

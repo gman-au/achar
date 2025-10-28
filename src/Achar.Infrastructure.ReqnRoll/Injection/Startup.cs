@@ -2,6 +2,7 @@
 using System.IO;
 using Achar.Infrastructure.Api.HttpClient;
 using Achar.Infrastructure.Api.HttpClient.Options;
+using Achar.Infrastructure.Appium.Android;
 using Achar.Infrastructure.Reporting;
 using Achar.Infrastructure.Reporting.Html;
 using Achar.Infrastructure.Reporting.Null;
@@ -42,7 +43,7 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
                 // .Configure<AppiumConfigurationOptions>(configuration.GetSection(nameof(AppiumConfigurationOptions)))
                 // .Configure<BrowserStackConfigurationOptions>(configuration.GetSection(nameof(BrowserStackConfigurationOptions)))
                 .AddSingleton<IApiInteractionEngine, ApiHttpClientInteractionEngine>()
-                // .AddSingleton<IScreenInteractionEngine, AndroidBrowserStackInteractionEngine>()
+                .AddSingleton<IScreenInteractionEngine, AppiumInteractionEngine>()
                 .AddSingleton<IScreenInteractionEngine, NullInteractionEngine>()
                 // .AddSingleton<IScreenInteractionEngine, AndroidAppiumInteractionEngine>()
                 // .AddTransient<IKeyboardKeyMapper, AndroidAppiumKeyboardKeyMapper>()
