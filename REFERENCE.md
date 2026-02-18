@@ -100,9 +100,48 @@ String
 <code>value</code></td>
 <td>
 <b>
-String
+Object
 </b>
 <br/>The value to set the body property e.g. "18".
+</td>
+</tr>
+</table>
+<h3>
+<code>Given the request body element "(.*)" has a (.*) value of (.*)</code>
+</h3>
+Sets a value of the request body (JSON only) to a set value, using a defined data type.
+            If the token path is a nested value e.g. Parent.Child.Something, then the token tree will be created all the way down.
+<table>
+<tr><th>Parameter</th><th>Type</th>
+</tr>
+<tr>
+<td>
+<code>jsonTokenPath</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The JSON token path e.g. "person.age".
+</td>
+</tr>
+<tr>
+<td>
+<code>dataType</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The data type of the value e.g. "System.Boolean".
+</td>
+</tr>
+<tr>
+<td>
+<code>value</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The value to set the body property e.g. "true". The value must be able to be parsed as a valid data type value.
 </td>
 </tr>
 </table>

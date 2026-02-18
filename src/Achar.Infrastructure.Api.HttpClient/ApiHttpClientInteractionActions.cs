@@ -58,7 +58,7 @@ namespace Achar.Infrastructure.Api.HttpClient
 
         public Task SetRequestBodyValueAsync(
             string jsonTokenPath,
-            string value)
+            object value)
         {
             _requestBody
                 .SetJObject(jsonTokenPath, value);

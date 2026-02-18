@@ -15,7 +15,7 @@ namespace Achar.Interfaces.Testing
 
         Task SetRequestBodyValueAsync(
             string jsonTokenPath,
-            string value
+            object value
         );
     }
 }

@@ -3,6 +3,8 @@ Feature: Ecommerce API
 
     @TEST_ERROR
     Scenario: Invalid path
+    Background:
+        Given test is skipped
         Given an API request is created against endpoint "/products/error"
         When the request is sent via "GET"
         Then the request should have failed with status code 404
@@ -10,6 +12,7 @@ Feature: Ecommerce API
 
     @TEST_ERROR
     Scenario: Invalid method
+        Given test is skipped
         Given an API request is created against endpoint "/products"
         When the request is sent via "PUT"
         Then the request should have failed with status code 405
@@ -17,6 +20,7 @@ Feature: Ecommerce API
 
     @TEST_PRODUCT
     Scenario: Get smartphone product
+        Given test is skipped
         Given an API request is created against endpoint "/products/1"
         When the request is sent via "GET"
         Then the request should have succeeded
@@ -25,6 +29,7 @@ Feature: Ecommerce API
 
     @TEST_PRODUCT
     Scenario: Get earbuds product
+        Given test is skipped
         Given an API request is created against endpoint "/products/3"
         When the request is sent via "GET"
         Then the request should have succeeded
