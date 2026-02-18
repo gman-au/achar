@@ -19,7 +19,7 @@ namespace Achar.Infrastructure.Testing.Null
 
         public Task SetRequestBodyValueAsync(
             string jsonTokenPath,
-            string value) => Task.CompletedTask;
+            object value) => Task.CompletedTask;
 
         public Task AssertResponseSucceededAsync() => Task.CompletedTask;
 

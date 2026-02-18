@@ -67,7 +67,7 @@ namespace Achar.Infrastructure.Api.Extensions
         public static async Task<IApiInteractionEngine> ActSetRequestBodyValueAsync(
             this Task<IApiInteractionEngine> task,
             string jsonTokenPath,
-            string value)
+            object value)
         {
             var context = await task;
 

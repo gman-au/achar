@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Achar.Infrastructure.Api.Extensions;
 using Achar.Infrastructure.Api.HttpClient.Options;
+using Achar.Infrastructure.ReqnRoll.Extensions;
 using Achar.Infrastructure.Testing.Extensions;
 using Achar.Interfaces.Testing;
 using Microsoft.Extensions.Options;
@@ -78,12 +79,35 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         [Given(@"the request body element ""(.*)"" has value ""(.*)""")]
         public async Task GivenTheRequestBodyElementHasValue(
             string jsonTokenPath,
-            string value)
+            object value)
         {
             await
                 engine
                     .ActGetContext()
                     .ActSetRequestBodyValueAsync(jsonTokenPath, value);
+        }
+
+        /// <summary>
+        /// Sets a value of the request body (JSON only) to a set value, using a defined data type.
+        /// If the token path is a nested value e.g. Parent.Child.Something, then the token tree will be created all the way down.
+        /// </summary>
+        /// <param name="jsonTokenPath">The JSON token path e.g. "person.age".</param>
+        /// <param name="dataType">The data type of the value e.g. "System.Boolean".</param>
+        /// <param name="value">The value to set the body property e.g. "true". The value must be able to be parsed as a valid data type value.</param>
+        [Given(@"the request body element ""(.*)"" has a (.*) value of (.*)")]
+        public async Task GivenTheRequestBodyElementHasValueOfType(
+            string jsonTokenPath,
+            string dataType,
+            string value)
+        {
+            var parsedValue =
+                value
+                    .ParseValueAs(dataType);
+
+            await
+                engine
+                    .ActGetContext()
+                    .ActSetRequestBodyValueAsync(jsonTokenPath, parsedValue);
         }
 
         /// <summary>
