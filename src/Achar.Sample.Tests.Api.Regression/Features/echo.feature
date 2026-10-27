@@ -1,9 +1,11 @@
 @DEVICE:API
 Feature: Echo API (https://echo.zuplo.io)
 
+    Background: Test may or may not be skipped
+        Given test is not skipped
+
     @TEST_PRODUCT
     Scenario: Set nested Post data
-        Given test is skipped
         Given an API request is created against endpoint ""
         And the request body element "sub-body.child.age" has value "32"
         And the request body element "sub-body.child.height" has a double value of 175

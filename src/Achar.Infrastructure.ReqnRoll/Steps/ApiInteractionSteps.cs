@@ -23,6 +23,7 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         /// </summary>
         /// <param name="endpoint">The endpoint for this API request. The full URI will be (BaseUrl) + (endpoint).</param>
         [Given(@"an API request is created against endpoint ""(.*)""")]
+        [When(@"an API request is created against endpoint ""(.*)""")]
         public async Task GivenAnApiRequestIsCreatedAgainstEndpoint(string endpoint)
         {
             await
@@ -77,6 +78,7 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         /// <param name="jsonTokenPath">The JSON token path e.g. "person.age".</param>
         /// <param name="value">The value to set the body property e.g. "18".</param>
         [Given(@"the request body element ""(.*)"" has value ""(.*)""")]
+        [When(@"the request body element ""(.*)"" has value ""(.*)""")]
         public async Task GivenTheRequestBodyElementHasValue(
             string jsonTokenPath,
             object value)
@@ -95,6 +97,7 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         /// <param name="dataType">The data type of the value e.g. "System.Boolean".</param>
         /// <param name="value">The value to set the body property e.g. "true". The value must be able to be parsed as a valid data type value.</param>
         [Given(@"the request body element ""(.*)"" has a (.*) value of (.*)")]
+        [When(@"the request body element ""(.*)"" has a (.*) value of (.*)")]
         public async Task GivenTheRequestBodyElementHasValueOfType(
             string jsonTokenPath,
             string dataType,
@@ -201,6 +204,32 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         }
 
         /// <summary>
+        /// Takes a path from the JSON response and stores it in the temporary value store. 
+        /// </summary>
+        /// <param name="path">The JSON token path e.g. "person.age"</param>
+        /// <param name="key">The value store key to store the value e.g. "person-age".</param>
+        [Given(@"the response with path ""(.*)"" is stored with key ""(.*)""")]
+        [When(@"the response with path ""(.*)"" is stored with key ""(.*)""")]
+        public async Task GivenTheResponseWithPathIsStoredWithKey(
+            string path,
+            string key)
+        {
+            var valueToStore =
+                await
+                    engine
+                        .ActGetContext()
+                        .ActGetJsonTokenPathValueAsync(path);
+
+            await
+                engine
+                    .ActGetContext()
+                    .ActSetValueStoreValueAsync(
+                        key,
+                        valueToStore
+                    );
+        }
+
+        /// <summary>
         /// Skips the test.
         /// </summary>
         [Given(@"test is skipped")]
@@ -210,6 +239,63 @@ namespace Achar.Infrastructure.ReqnRoll.Steps
         {
             Assert
                 .Ignore("Test has been skipped");
+        }
+        
+        /// <summary>
+        /// Does not skip the test. Useful inside a Background feature to toggle skipped tests on and off per whole feature. 
+        /// </summary>
+        [Given(@"test is not skipped")]
+        [When(@"test is not skipped")]
+        [Then(@"test is not skipped")]
+        public async Task GivenTestIsNotSkipped()
+        {
+        }
+        
+        /// <summary>
+        /// Sets a value of the request body (JSON only) to a stored value from the value store.
+        /// If the token path is a nested value e.g. Parent.Child.Something, then the token tree will be created all the way down.
+        /// </summary>
+        /// <param name="jsonTokenPath">The JSON token path e.g. "person.age".</param>
+        /// <param name="key">The value store key to retrieve the value e.g. "person-age".</param>
+        [Given(@"the request body element ""(.*)"" has value stored under ""(.*)""")]
+        [When(@"the request body element ""(.*)"" has value stored under ""(.*)""")]
+        public async Task GivenTheRequestBodyElementHasValueStoredUnder(
+            string jsonTokenPath,
+            string key)
+        {
+            var value =
+                await
+                    engine
+                        .ActGetContext()
+                        .ActGetValueStoreValueAsync(key);
+
+            await
+                engine
+                    .ActGetContext()
+                    .ActSetRequestBodyValueAsync(jsonTokenPath, value);
+        }        
+        
+        /// <summary>
+        /// Sets the HTTP header for the current API request to a stored value from the value store.
+        /// </summary>
+        /// <param name="headerKey">The header key, e.g. "content-type".</param>
+        /// <param name="storeKey">The value store key to retrieve the value e.g. "api-key".</param>
+        [Given(@"the request header element ""(.*)"" has value stored under ""(.*)""")]
+        [When(@"the request header element ""(.*)"" has value stored under ""(.*)""")]
+        public async Task GivenTheRequestHeaderElementHasValueStoredUnder(
+            string headerKey,
+            string storeKey)
+        {
+            var value =
+                await
+                    engine
+                        .ActGetContext()
+                        .ActGetValueStoreValueAsync(storeKey);
+            
+            await
+                engine
+                    .ActGetContext()
+                    .ActSetRequestHeaderValueAsync(headerKey, value);
         }
     }
 }

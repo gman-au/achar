@@ -55,7 +55,8 @@ namespace Achar.Infrastructure.ReqnRoll.Injection
                 .AddSingleton<IScopedReportingContextManager, ScopedReportingContextManager>()
                 .AddSingleton<IDeviceDataBuilder, DeviceDataBuilder>()
                 .AddScoped<ITestDateStamper, TestDateStamper>()
-                .AddScoped<IStepCollector, StepCollector>();
+                .AddScoped<IStepCollector, StepCollector>()
+                .AddScoped<IValueStore, ValueStore>();
 
             return services;
         }
