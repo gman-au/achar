@@ -21,6 +21,19 @@ namespace Achar.Infrastructure.Testing.Null
             string jsonTokenPath,
             object value) => Task.CompletedTask;
 
+        public Task SetValueStoreValueAsync(
+            string key,
+            string value
+        ) => Task.CompletedTask;
+
+        public Task<string> GetValueStoreValueAsync(
+            string key
+        ) => Task.FromResult(string.Empty);
+
+        public Task<string> GetJsonTokenPathValueAsync(
+            string jsonTokenPath
+        ) => Task.FromResult(string.Empty);
+
         public Task AssertResponseSucceededAsync() => Task.CompletedTask;
 
         public Task AssertResponseFailedAsync(int? expectedStatusCode = null) => Task.CompletedTask;

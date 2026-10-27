@@ -9,13 +9,16 @@ using Achar.Domain.Testing.Exception;
 using Achar.Infrastructure.Api.HttpClient.Extensions;
 using Achar.Infrastructure.Api.HttpClient.Options;
 using Achar.Infrastructure.Testing.Extensions;
+using Achar.Interfaces.Testing;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Achar.Infrastructure.Api.HttpClient
 {
     public partial class ApiHttpClientInteractionEngine(
-        IOptions<ApiConfigurationOptions> apiConfigurationOptionsAccessor
+        IOptions<ApiConfigurationOptions> apiConfigurationOptionsAccessor,
+        IValueStore store
     )
     {
         private readonly ApiConfigurationOptions _apiConfigurationOptions = apiConfigurationOptionsAccessor.Value;
@@ -115,6 +118,66 @@ namespace Achar.Infrastructure.Api.HttpClient
             {
                 throw new ApiRequestFailedException(_lastRequest, ex);
             }
+        }
+
+        public async Task SetValueStoreValueAsync(
+            string key,
+            string value
+        )
+        {
+            store
+                .SetValue(
+                key,
+                value
+            );
+        }
+
+        public async Task<string> GetValueStoreValueAsync(
+            string key
+        )
+        {
+            return 
+                store
+                    .GetValue(key);
+        }
+        
+        public async Task<string> GetJsonTokenPathValueAsync(
+            string jsonTokenPath)
+        {
+            var jsonBody =
+                await
+                    _lastResponse?
+                        .Content?
+                        .ReadAsStringAsync();
+
+            var jObject =
+                JObject
+                    .Parse(jsonBody);
+
+            var expectedObject =
+                jObject
+                    .SelectToken(jsonTokenPath);
+
+            string actualValue;
+
+            if (expectedObject?.Type != JTokenType.Object)
+            {
+                actualValue =
+                    expectedObject?
+                        .Value<string>();
+            }
+            else
+            {
+                var dict =
+                    expectedObject
+                        .Value<JObject>();
+
+                actualValue =
+                    dict
+                        .ToString(Formatting.None);
+            }
+
+            return actualValue;
         }
     }
 }

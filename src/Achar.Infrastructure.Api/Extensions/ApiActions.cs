@@ -77,5 +77,47 @@ namespace Achar.Infrastructure.Api.Extensions
 
             return context;
         }
+
+        public static async Task<string> ActGetValueStoreValueAsync(
+            this Task<IApiInteractionEngine> task,
+            string key)
+        {
+            var context = await task;
+
+            var result =
+                await
+                    context
+                        .GetValueStoreValueAsync(key);
+
+            return result;
+        }
+
+        public static async Task<string> ActGetJsonTokenPathValueAsync(
+            this Task<IApiInteractionEngine> task,
+            string key)
+        {
+            var context = await task;
+
+            var result =
+                await
+                    context
+                        .GetJsonTokenPathValueAsync(key);
+
+            return result;
+        }
+
+        public static async Task<IApiInteractionEngine> ActSetValueStoreValueAsync(
+            this Task<IApiInteractionEngine> task,
+            string key,
+            string value)
+        {
+            var context = await task;
+
+            await
+                context
+                    .SetValueStoreValueAsync(key, value);
+
+            return context;
+        }
     }
 }

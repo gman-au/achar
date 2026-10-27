@@ -17,5 +17,18 @@ namespace Achar.Interfaces.Testing
             string jsonTokenPath,
             object value
         );
+
+        Task SetValueStoreValueAsync(
+            string key,
+            string value
+        );
+
+        Task<string> GetValueStoreValueAsync(
+            string key
+        );
+
+        Task<string> GetJsonTokenPathValueAsync(
+            string jsonTokenPath
+        );
     }
 }

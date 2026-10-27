@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Achar.Domain.Testing.Enum;
 using Achar.Interfaces.Reporting;
-using Achar.Interfaces.Testing;
 using NUnit.Framework;
 using Reqnroll;
 
