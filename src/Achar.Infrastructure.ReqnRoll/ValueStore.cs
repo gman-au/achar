@@ -12,11 +12,7 @@ namespace Achar.Infrastructure.ReqnRoll
             string value
         )
         {
-            _dictionary
-                .Add(
-                    key,
-                    value
-                );
+            _dictionary[key] = value;
         }
 
         public string GetValue(
