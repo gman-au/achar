@@ -175,9 +175,98 @@ String
 </tr>
 </table>
 <h3>
+<code>Given the response with path "(.*)" is stored with key "(.*)"</code>
+</h3>
+Takes a path from the JSON response and stores it in the temporary value store.
+<table>
+<tr><th>Parameter</th><th>Type</th>
+</tr>
+<tr>
+<td>
+<code>path</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The JSON token path e.g. "person.age"
+</td>
+</tr>
+<tr>
+<td>
+<code>key</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The value store key to store the value e.g. "person-age".
+</td>
+</tr>
+</table>
+<h3>
 <code>Given test is skipped</code>
 </h3>
 Skips the test.
+<h3>
+<code>Given test is not skipped</code>
+</h3>
+Does not skip the test. Useful inside a Background feature to toggle skipped tests on and off per whole feature.
+<h3>
+<code>Given the request body element "(.*)" has value stored under "(.*)"</code>
+</h3>
+Sets a value of the request body (JSON only) to a stored value from the value store.
+            If the token path is a nested value e.g. Parent.Child.Something, then the token tree will be created all the way down.
+<table>
+<tr><th>Parameter</th><th>Type</th>
+</tr>
+<tr>
+<td>
+<code>jsonTokenPath</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The JSON token path e.g. "person.age".
+</td>
+</tr>
+<tr>
+<td>
+<code>key</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The value store key to retrieve the value e.g. "person-age".
+</td>
+</tr>
+</table>
+<h3>
+<code>Given the request header element "(.*)" has value stored under "(.*)"</code>
+</h3>
+Sets the HTTP header for the current API request to a stored value from the value store.
+<table>
+<tr><th>Parameter</th><th>Type</th>
+</tr>
+<tr>
+<td>
+<code>headerKey</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The header key, e.g. "content-type".
+</td>
+</tr>
+<tr>
+<td>
+<code>storeKey</code></td>
+<td>
+<b>
+String
+</b>
+<br/>The value store key to retrieve the value e.g. "api-key".
+</td>
+</tr>
+</table>
 <h3>
 <code>When the request is sent via "(.*)"</code>
 </h3>
